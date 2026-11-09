@@ -6,6 +6,10 @@
 	<title>Event Driven</title>
 </head>
 <body>
+	<h2 id="count-value">Count: 0</h2><br>
+	<button id="count-btn">Add</button>
+	<p id="count-btn-reset">Reset</p>
+	<br>
 	<h1 id="first-text">Click the button</h1><br>
 	<button id="first-button">Click me</button><br>
 	<h1 id="second-text">Hover Me</h1><br>
@@ -17,6 +21,24 @@
 
 		const secondElement = document.getElementById('second-text');
 		const thirdElement = document.getElementById('third-text');
+
+		let count = 0;
+		const countBtn = document.getElementById('count-btn');
+		const countBtnReset = document.getElementById('count-btn-reset');
+		const countElement = document.getElementById('count-value');
+
+		countBtnReset.addEventListener('click', (e) => {
+			e.preventDefault();
+			count = 0;
+			countElement.innerHTML = `Count: ${count}`;
+		});
+
+		countBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			count++;
+			countElement.innerHTML = `Count: ${count}`;
+
+		});
 
 		firstButton.addEventListener('click', (e) => {
 			e.preventDefault();
