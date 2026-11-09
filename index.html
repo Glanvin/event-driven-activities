@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Event Driven</title>
+</head>
+<body>
+	<h1 id="first-text">Click the button</h1><br>
+	<button id="first-button">Click me</button><br>
+	<h1 id="second-text">Hover Me</h1><br>
+	<h1 id="third-text">Double Click Me</h1><br>
+
+	<script>
+		const firstElement = document.getElementById('first-text');
+		const firstButton = document.getElementById('first-button');
+
+		const secondElement = document.getElementById('second-text');
+		const thirdElement = document.getElementById('third-text');
+
+		firstButton.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			if(firstElement.innerHTML == "Hello World") {
+				firstElement.innerHTML = 'Click the button';	
+			}else {
+				firstElement.innerHTML = 'Hello World';
+			}
+			
+		});
+
+		secondElement.addEventListener('mouseover', (e) => {
+			secondElement.innerHTML = "Element Hovered!";
+		});
+
+		secondElement.addEventListener('mouseout', (e) => {
+			secondElement.innerHTML = "Hover me";
+		});
+
+		thirdElement.addEventListener('dblclick', (e) => {
+			if(thirdElement.innerHTML == "Double Click Me") {
+				thirdElement.innerHTML = "Element Double Clicked!";
+			}else {
+				thirdElement.innerHTML = "Double Click Me";
+			}
+		});
+
+	</script>
+</body>
+</html>
