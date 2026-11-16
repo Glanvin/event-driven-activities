@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 2:  Changing HTML Contents </title>
+    <style>
+    	table, th, tr, td {
+    		border: 2px black solid;
+    		text-align: center;
+    	}
+    	.cell {
+    		color: white;
+    	}
+    </style>
+</head>
+<body>
+	<table id="table" class="table">
+		<th colspan="6">MY SCHEDULE</th>
+		<tr>
+			<td>DAYS</td>
+			<td>7:30 - 9:00</td>
+			<td>9:00 - 11:00</td>
+			<td>11:00 - 12:00</td>
+			<td>12:00 - 1:00</td>
+			<td>2:00 - 4:00</td>
+		</tr>
+		<tr>
+			<td>Monday</td>
+			<td colspan="2" class="cs4">CS4</td>
+			<td></td>
+			<td rowspan="6" id="lunch">LUNCH <br> BREAK</td>
+			<td rowspan="3" class="it101">IT 101</td>
+		</tr>
+		<tr>
+			<td>Tuesday</td>
+			<td></td>
+			<td colspan="2" class="it101">IT 101</td>
+		</tr>
+		<tr>
+			<td>Wednesday</td>
+			<td class="gec">GEC 3</td>
+			<td class="gec">GEC 4</td>
+			<td rowspan="2" class="gec">GEC 5</td>
+		</tr>
+		<tr>
+			<td>Thursday</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Friday</td>
+			<td colspan="3" class="cs4">CS4</td>
+			<td rowspan="2">IT 103</td>
+		</tr>
+		<tr>
+			<td>Saturday</td>
+			<td></td>
+			<td colspan="2">IT 103</td>
+		</tr>
+	</table>
+<script>
+	const allCS4 = document.querySelectorAll('.cs4');
+	const gecs = document.querySelectorAll('.gec');
+	const lunch =document.getElementById('lunch');
+	const it101 =document.querySelector('.it101');
+	const table =document.querySelector('.table');
+
+	table.addEventListener('dblclick', (e) => {
+		table.style.border = "5px solid blue";
+	});
+
+	allCS4.forEach((cs4) => {
+		cs4.addEventListener('click', (e) => {
+			cs4.style.backgroundColor = "darkgreen";
+			cs4.style.color = "white";
+			cs4.style.fontSize = 12;
+			cs4.style.fontFamily = "Arial";
+		});
+	});
+
+	lunch.addEventListener('mouseover', (e) => {
+		lunch.style.backgroundColor = "black";
+		lunch.style.color = "white";
+	});
+
+	gecs.forEach((gec) => {
+		document.body.addEventListener('keyup', (e) => {
+			if(event.key === "Enter") {
+				gec.style.backgroundColor = "orange";
+				gec.style.color = "white";
+				gec.style.fontFamily = "Arial";
+				gec.style.fontSize = 12;
+			}
+		});
+	});
+</script>
+</body>
+</html>
