@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Activity #4: Dynamic Task</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: darkblue;
+        }
+
+        li {
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">My tasks</h1>
+
+    <ul id="tasks">
+        <li>Review DOM</li>
+        <li>Practice JavaScript</li>
+    </ul>
+
+    <button id="add">Add</button>
+    <button id="highlight">Highlight</button>
+    <button id="removeLast">Remove Last</button>
+
+    <p id="status"></p>
+
+    <script>
+        const heading = document.getElementById('heading');
+        const tasks = document.getElementById('tasks');
+        const statusBox = document.getElementById('status');
+
+        console.log(document.querySelectorAll('li'));
+
+        heading.texCtontent = "Today's Task";
+        heading.setAttribute('title', 'Task List Heading');
+
+        const btnHighlight = document.getElementById('highlight');
+
+        btnHighlight.addEventListener('click', (e) => {
+            e.preventDefault();
+            heading.classList.toggle('highlight');
+            
+            if(heading.classList.contains('highlight')) {
+                statusBox.textContent = "Highlight is ON";
+                statusBox.style.color = 'red';
+            }else {
+                statusBox.textContent = "Highlight is OFF";
+                statusBox.style.color = 'black';
+            }
+        });
+
+        const btnAdd = document.getElementById('add');
+        
+        btnAdd.addEventListener('click', (e) => {
+            e.preventDefault();
+            let numTask = document.querySelectorAll('li').length
+            newTask = document.createElement("li");
+
+            numTask++;
+            newTask.textContent = "New Task " + numTask;
+
+            //tasks.appendChild(newTask);
+            tasks.insertBefore(newTask, tasks.children[0])
+
+        });
+
+        const btnRemove = document.getElementById('removeLast');
+
+        btnRemove.addEventListener('click',(e) => {
+            if(tasks.children.length > 0) {
+                let last = tasks.children[tasks.children.length - 1];
+                last.parentNode.removeChild(last);
+                statusBox.textContent = "Last Task Removed!";
+            }else {
+                statusBox.textContent = "Nothing to Removed!";
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
